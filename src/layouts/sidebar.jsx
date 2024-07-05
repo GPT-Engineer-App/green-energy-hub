@@ -48,9 +48,6 @@ const Sidebar = () => (
               {item.title}
             </SidebarNavLink>
           ))}
-          <SidebarNavLink to="/solar-panel-calculator">
-            Solar Panel Calculator
-          </SidebarNavLink>
         </nav>
       </div>
     </div>
@@ -79,9 +76,6 @@ const MobileSidebar = () => (
             {item.title}
           </SidebarNavLink>
         ))}
-        <SidebarNavLink to="/solar-panel-calculator">
-          Solar Panel Calculator
-        </SidebarNavLink>
       </nav>
     </SheetContent>
   </Sheet>

@@ -1,228 +1,82 @@
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { MapContainer, TileLayer, FeatureGroup } from 'react-leaflet';
-import { EditControl } from 'react-leaflet-draw';
-import 'leaflet/dist/leaflet.css';
-import styled from 'styled-components';
-import { useQuery } from '@tanstack/react-query';
-import { fetchSunHours } from '@/utils/api';
-import { calculateSimple, calculateComplex } from '@/utils/calculations';
-import { parsePDF } from '@/utils/pdfParser';
-import { getRecommendations } from '@/utils/aiAssistant';
-import L from 'leaflet';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const SolarPanelCalculator = () => {
-  const [isSimple, setIsSimple] = useState(true);
-  const [location, setLocation] = useState('');
-  const [roofArea, setRoofArea] = useState('');
-  const [energyConsumption, setEnergyConsumption] = useState('');
-  const [panelWattage, setPanelWattage] = useState('');
-  const [panelEfficiency, setPanelEfficiency] = useState('');
-  const [panelOrientation, setPanelOrientation] = useState('');
-  const [shading, setShading] = useState('');
-  const [tiltAngle, setTiltAngle] = useState('');
-  const [energyCost, setEnergyCost] = useState('');
-  const [pdfFile, setPdfFile] = useState(null);
-  const [results, setResults] = useState(null);
-  const [recommendations, setRecommendations] = useState(null);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
 
-  const { data: sunHours } = useQuery({
-    queryKey: ['sunHours', location],
-    queryFn: () => fetchSunHours(location),
-    enabled: !!location,
-  });
-
-  const handleCalculate = async () => {
-    let calcResults;
-    if (isSimple) {
-      calcResults = calculateSimple({ location, roofArea, energyConsumption, sunHours });
-    } else {
-      const panelSpecs = pdfFile ? await parsePDF(pdfFile) : {};
-      calcResults = calculateComplex({
-        location,
-        roofArea,
-        panelWattage,
-        panelEfficiency,
-        panelOrientation,
-        shading,
-        tiltAngle,
-        energyCost,
-        sunHours,
-        ...panelSpecs,
-      });
+  const handleNewsletterSignup = (e) => {
+    e.preventDefault();
+    if (!email) {
+      alert("Please enter a valid email address.");
+      return;
     }
-    setResults(calcResults);
-    const aiRecommendations = await getRecommendations(calcResults);
-    setRecommendations(aiRecommendations);
+    // Handle newsletter signup logic here
+    alert(`Signed up with email: ${email}`);
   };
 
   return (
-    <Container>
-      <Header>Solar Panel Sizing Calculator</Header>
-      <ToggleContainer>
-        <Button variant={isSimple ? 'primary' : 'secondary'} onClick={() => setIsSimple(true)}>
-          Simple Calculator
-        </Button>
-        <Button variant={!isSimple ? 'primary' : 'secondary'} onClick={() => setIsSimple(false)}>
-          Complex Calculator
-        </Button>
-      </ToggleContainer>
-      <Form>
-        <Input
-          type="text"
-          placeholder="Location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <Input
-          type="text"
-          placeholder="Roof Area (m² or ft²)"
-          value={roofArea}
-          onChange={(e) => setRoofArea(e.target.value)}
-        />
-        {isSimple ? (
+    <div className="space-y-12">
+      {/* Header */}
+      <header className="flex justify-between items-center p-4 bg-green-600 text-white">
+        <h1 className="text-2xl font-bold">Eco-Electric</h1>
+        <nav className="space-x-4">
+          <a href="/" className="hover:underline">Home</a>
+          <a href="/educational-resources" className="hover:underline">Educational Resources</a>
+          <a href="/design-tools" className="hover:underline">Design Tools</a>
+          <a href="/regional-adaptation" className="hover:underline">Regional Adaptation</a>
+          <a href="/content-updates" className="hover:underline">Content Updates</a>
+          <a href="/sign-in" className="hover:underline">Sign In/Sign Up</a>
+        </nav>
+      </header>
+
+      {/* Main Section */}
+      <section className="text-center space-y-4">
+        <h2 className="text-4xl font-bold">Solar Panel Sizing Calculator</h2>
+        <p className="text-xl">Optimize your solar panel installation with our easy-to-use calculators.</p>
+      </section>
+
+      {/* Simple Calculator Section */}
+      <section className="space-y-8">
+        <h3 className="text-3xl font-bold text-center">Simple Calculator</h3>
+        <p className="text-center">Basic estimation for solar panel sizing.</p>
+        <div className="text-center">
+          <Button variant="primary" onClick={() => navigate("/simple-calculator")}>Try Now</Button>
+        </div>
+      </section>
+
+      {/* Complex Calculator Section */}
+      <section className="space-y-8">
+        <h3 className="text-3xl font-bold text-center">Complex Calculator</h3>
+        <p className="text-center">Detailed analysis for solar panel sizing considering multiple factors.</p>
+        <div className="text-center">
+          <Button variant="primary" onClick={() => navigate("/complex-calculator")}>Try Now</Button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="space-y-4 text-center p-4 bg-gray-800 text-white">
+        <p>&copy; 2023 Eco-Electric Platform. All rights reserved.</p>
+        <div className="space-x-4">
+          <a href="#" className="hover:underline">Facebook</a>
+          <a href="#" className="hover:underline">Twitter</a>
+          <a href="#" className="hover:underline">LinkedIn</a>
+        </div>
+        <form onSubmit={handleNewsletterSignup} className="space-y-4">
           <Input
-            type="text"
-            placeholder="Energy Consumption (kWh)"
-            value={energyConsumption}
-            onChange={(e) => setEnergyConsumption(e.target.value)}
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-        ) : (
-          <>
-            <Input
-              type="text"
-              placeholder="Panel Wattage (250W, 300W, 350W, 400W, Manual Input)"
-              value={panelWattage}
-              onChange={(e) => setPanelWattage(e.target.value)}
-            />
-            <Input
-              type="text"
-              placeholder="Panel Efficiency (15%, 18%, 20%, 22%, Manual Input)"
-              value={panelEfficiency}
-              onChange={(e) => setPanelEfficiency(e.target.value)}
-            />
-            <Input
-              type="text"
-              placeholder="Panel Orientation (South, South-East, South-West, East, West, North)"
-              value={panelOrientation}
-              onChange={(e) => setPanelOrientation(e.target.value)}
-            />
-            <Input
-              type="text"
-              placeholder="Shading (0% (No shading), 5%, 10%, 15%, 20%, Manual Input)"
-              value={shading}
-              onChange={(e) => setShading(e.target.value)}
-            />
-            <Input
-              type="text"
-              placeholder="Tilt Angle (0° (Flat), 15°, 30°, 45°, Manual Input)"
-              value={tiltAngle}
-              onChange={(e) => setTiltAngle(e.target.value)}
-            />
-            <Input
-              type="text"
-              placeholder="Local Energy Cost (per kWh)"
-              value={energyCost}
-              onChange={(e) => setEnergyCost(e.target.value)}
-            />
-            <Input
-              type="file"
-              accept="application/pdf"
-              onChange={(e) => setPdfFile(e.target.files[0])}
-            />
-          </>
-        )}
-        <Button variant="primary" onClick={handleCalculate}>
-          Calculate
-        </Button>
-      </Form>
-      {results && (
-        <Results>
-          <Card>
-            <CardHeader>
-              <CardTitle>Calculation Results</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Total kWp: {results.totalKwp}</p>
-              <p>Estimated Annual Production: {results.annualProduction}</p>
-              <p>Annual Savings: {results.annualSavings}</p>
-              <p>Payback Period: {results.paybackPeriod}</p>
-              <p>CO2 Emissions Saved: {results.co2Saved}</p>
-            </CardContent>
-          </Card>
-        </Results>
-      )}
-      {recommendations && (
-        <Recommendations>
-          <Card>
-            <CardHeader>
-              <CardTitle>AI Recommendations</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>{recommendations}</p>
-            </CardContent>
-          </Card>
-        </Recommendations>
-      )}
-      <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '400px', width: '100%' }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <FeatureGroup>
-          <EditControl
-            position="topright"
-            onCreated={(e) => {
-              const { layerType, layer } = e;
-              if (layerType === 'polygon') {
-                const area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
-                setRoofArea(area);
-              }
-            }}
-            draw={{
-              rectangle: false,
-              circle: false,
-              marker: false,
-              polyline: false,
-            }}
-          />
-        </FeatureGroup>
-      </MapContainer>
-    </Container>
+          <Button type="submit" variant="primary">Sign Up</Button>
+        </form>
+      </footer>
+    </div>
   );
 };
-
-const Container = styled.div`
-  padding: 20px;
-`;
-
-const Header = styled.h1`
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
-`;
-
-const ToggleContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-`;
-
-const Form = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-`;
-
-const Results = styled.div`
-  margin-bottom: 20px;
-`;
-
-const Recommendations = styled.div`
-  margin-bottom: 20px;
-`;
 
 export default SolarPanelCalculator;
