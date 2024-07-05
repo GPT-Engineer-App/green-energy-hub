@@ -37,9 +37,20 @@ const DesktopNav = () => (
       <Package2 className="h-6 w-6" />
       <span className="sr-only">Acme Inc</span>
     </NavItem>
-    <NavItem to="/solar-panel-calculator">
-      Solar Panel Calculator
-    </NavItem>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="link" className="text-lg font-semibold md:text-base">
+          Design Tools
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem asChild>
+          <NavItem to="/design-tools/solar-panel-calculator">
+            Solar Panel Sizing Calculator
+          </NavItem>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
     {navItems.map((item) => (
       <NavItem key={item.to} to={item.to}>
         {item.title}
@@ -65,9 +76,20 @@ const MobileNav = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
         </NavItem>
-        <NavItem to="/solar-panel-calculator">
-          Solar Panel Calculator
-        </NavItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="link" className="text-lg font-semibold">
+              Design Tools
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem asChild>
+              <NavItem to="/design-tools/solar-panel-calculator">
+                Solar Panel Sizing Calculator
+              </NavItem>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
             {item.title}
