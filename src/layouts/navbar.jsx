@@ -37,9 +37,24 @@ const DesktopNav = () => (
       <Package2 className="h-6 w-6" />
       <span className="sr-only">Acme Inc</span>
     </NavItem>
-    <NavItem to="/solar-panel-calculator">
-      Solar Panel Calculator
+    <NavItem to="/design-tools">
+      Design Tools
     </NavItem>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="link" className="text-lg font-medium md:text-sm">
+          Solar Panel Sizing Calculator
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem asChild>
+          <NavLink to="/design-tools/simple-calculator">Simple Calculator</NavLink>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <NavLink to="/design-tools/complex-calculator">Complex Calculator</NavLink>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
     {navItems.map((item) => (
       <NavItem key={item.to} to={item.to}>
         {item.title}
@@ -65,9 +80,24 @@ const MobileNav = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
         </NavItem>
-        <NavItem to="/solar-panel-calculator">
-          Solar Panel Calculator
+        <NavItem to="/design-tools">
+          Design Tools
         </NavItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="link" className="text-lg font-medium">
+              Solar Panel Sizing Calculator
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem asChild>
+              <NavLink to="/design-tools/simple-calculator">Simple Calculator</NavLink>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <NavLink to="/design-tools/complex-calculator">Complex Calculator</NavLink>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
             {item.title}
