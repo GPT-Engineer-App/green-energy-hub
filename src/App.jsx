@@ -17,7 +17,7 @@ const queryClient = new QueryClient();
 
 export const navItems = [
   {
-    title: "Home", // Feel free to change this to your liking
+    title: "Home",
     to: "/",
     icon: <Home className="h-4 w-4" />,
   },
@@ -28,6 +28,12 @@ export const navItems = [
   {
     title: "Design Tools",
     to: "/design-tools",
+    children: [
+      {
+        title: "Solar Panel Calculator",
+        to: "/solar-panel-calculator",
+      },
+    ],
   },
   {
     title: "Regional Adaptation",
