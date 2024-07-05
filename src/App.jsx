@@ -9,7 +9,7 @@ import EducationalResources from "./pages/EducationalResources.jsx";
 import DesignTools from "./pages/DesignTools.jsx";
 import RegionalAdaptation from "./pages/RegionalAdaptation.jsx";
 import ContentUpdates from "./pages/ContentUpdates.jsx";
-import SolarPanelCalculator from "./pages/SolarPanelCalculator.jsx"; // Updated import path
+import SolarPanelCalculator from "./pages/design-tools/SolarPanelCalculator.jsx"; // Updated import path
 import SimpleCalculator from "./pages/SimpleCalculator.jsx";
 import ComplexCalculator from "./pages/ComplexCalculator.jsx";
 
@@ -53,8 +53,9 @@ const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<Index />} />
               <Route path="/educational-resources" element={<EducationalResources />} />
-              <Route path="/design-tools" element={<DesignTools />} />
-              <Route path="/design-tools/solar-panel-calculator" element={<SolarPanelCalculator />} /> {/* Updated route */}
+              <Route path="/design-tools" element={<DesignTools />}>
+                <Route path="solar-panel-calculator" element={<SolarPanelCalculator />} /> {/* Updated route */}
+              </Route>
               <Route path="/regional-adaptation" element={<RegionalAdaptation />} />
               <Route path="/content-updates" element={<ContentUpdates />} />
               <Route path="/simple-calculator" element={<SimpleCalculator />} />
