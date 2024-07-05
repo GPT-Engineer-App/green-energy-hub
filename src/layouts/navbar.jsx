@@ -43,9 +43,9 @@ const DesktopNav = () => (
           Design Tools
         </NavItem>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="bg-white shadow-lg rounded-md">
         <DropdownMenuItem asChild>
-          <NavItem to="/solar-panel-calculator">
+          <NavItem to="/solar-panel-calculator" className="px-4 py-2 hover:bg-gray-100">
             Solar Panel Sizing Calculator
           </NavItem>
         </DropdownMenuItem>
@@ -82,9 +82,9 @@ const MobileNav = () => (
               Design Tools
             </NavItem>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="bg-white shadow-lg rounded-md">
             <DropdownMenuItem asChild>
-              <NavItem to="/solar-panel-calculator">
+              <NavItem to="/solar-panel-calculator" className="px-4 py-2 hover:bg-gray-100">
                 Solar Panel Sizing Calculator
               </NavItem>
             </DropdownMenuItem>
