@@ -12,6 +12,7 @@ import { fetchSunHours } from '@/utils/api';
 import { calculateSimple, calculateComplex } from '@/utils/calculations';
 import { parsePDF } from '@/utils/pdfParser';
 import { getRecommendations } from '@/utils/aiAssistant';
+import L from 'leaflet';
 
 const SolarPanelCalculator = () => {
   const [isSimple, setIsSimple] = useState(true);
