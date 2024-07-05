@@ -28,10 +28,12 @@ export const navItems = [
   {
     title: "Design Tools",
     to: "/design-tools",
-  },
-  {
-    title: "Solar Panel Calculator", // Moved to Design Tools section
-    to: "/solar-panel-calculator",
+    children: [
+      {
+        title: "Solar Panel Calculator",
+        to: "/solar-panel-calculator",
+      },
+    ],
   },
   {
     title: "Regional Adaptation",
