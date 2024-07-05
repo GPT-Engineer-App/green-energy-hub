@@ -71,6 +71,9 @@ const MobileSidebar = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
         </NavLink>
+        <NavItem to="/design-tools">
+          Design Tools
+        </NavItem>
         {navItems.map((item) => (
           <SidebarNavLink key={item.to} to={item.to}>
             {item.title}
