@@ -76,6 +76,7 @@ const DesignTools = () => {
         </form>
       </footer>
     </div>
+  );
 };
 
 export default DesignTools;
