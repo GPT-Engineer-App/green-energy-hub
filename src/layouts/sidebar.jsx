@@ -64,15 +64,16 @@ const MobileSidebar = () => (
     </SheetTrigger>
     <SheetContent side="left" className="flex flex-col">
       <nav className="grid gap-2 text-lg font-medium">
-        <NavLink
+        <SidebarNavLink
           to="/"
           className="flex items-center gap-2 text-lg font-semibold mb-4"
         >
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
-        </NavLink>
+        </SidebarNavLink>
         {navItems.map((item) => (
           <SidebarNavLink key={item.to} to={item.to}>
+            {item.icon}
             {item.title}
           </SidebarNavLink>
         ))}
