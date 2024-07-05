@@ -9,7 +9,7 @@ import EducationalResources from "./pages/EducationalResources.jsx";
 import DesignTools from "./pages/DesignTools.jsx";
 import RegionalAdaptation from "./pages/RegionalAdaptation.jsx";
 import ContentUpdates from "./pages/ContentUpdates.jsx";
-import SolarPanelCalculator from "./pages/SolarPanelCalculator.jsx";
+import SolarPanelCalculator from "./pages/DesignTools/SolarPanelCalculator.jsx";
 import SimpleCalculator from "./pages/SimpleCalculator.jsx";
 import ComplexCalculator from "./pages/ComplexCalculator.jsx";
 
@@ -28,6 +28,12 @@ export const navItems = [
   {
     title: "Design Tools",
     to: "/design-tools",
+    children: [
+      {
+        title: "Solar Panel Calculator",
+        to: "/design-tools/solar-panel-calculator",
+      },
+    ],
   },
   {
     title: "Regional Adaptation",
@@ -54,9 +60,9 @@ const App = () => {
               <Route index element={<Index />} />
               <Route path="/educational-resources" element={<EducationalResources />} />
               <Route path="/design-tools" element={<DesignTools />} />
+              <Route path="/design-tools/solar-panel-calculator" element={<SolarPanelCalculator />} />
               <Route path="/regional-adaptation" element={<RegionalAdaptation />} />
               <Route path="/content-updates" element={<ContentUpdates />} />
-              <Route path="/solar-panel-calculator" element={<SolarPanelCalculator />} />
               <Route path="/simple-calculator" element={<SimpleCalculator />} />
               <Route path="/complex-calculator" element={<ComplexCalculator />} />
             </Route>
