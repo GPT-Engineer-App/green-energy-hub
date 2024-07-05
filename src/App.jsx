@@ -3,7 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Home } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Layout from "./layouts/default"; // available: default, navbar, sidebar
+import Layout from "./layouts/navbar"; // Changed to use the navbar layout
 import Index from "./pages/Index.jsx";
 const queryClient = new QueryClient();
 
@@ -12,6 +12,26 @@ export const navItems = [
     title: "Home", // Feel free to change this to your liking
     to: "/",
     icon: <Home className="h-4 w-4" />,
+  },
+  {
+    title: "Educational Resources",
+    to: "/educational-resources",
+  },
+  {
+    title: "Design Tools",
+    to: "/design-tools",
+  },
+  {
+    title: "Regional Adaptation",
+    to: "/regional-adaptation",
+  },
+  {
+    title: "Content Updates",
+    to: "/content-updates",
+  },
+  {
+    title: "Sign In/Sign Up",
+    to: "/sign-in",
   },
 ];
 
