@@ -43,10 +43,21 @@ const Sidebar = () => (
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
           {navItems.map((item) => (
-            <NavItem key={item.to} to={item.to}>
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                cn(
+                  "transition-colors",
+                  isActive
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )
+              }
+            >
               {item.icon}
               {item.title}
-            </NavItem>
+            </NavLink>
           ))}
         </nav>
       </div>
@@ -72,9 +83,20 @@ const MobileSidebar = () => (
           <span className="sr-only">Acme Inc</span>
         </NavLink>
         {navItems.map((item) => (
-          <NavItem key={item.to} to={item.to}>
+          <NavLink
+            key={item.to}
+            to={item.to}
+            className={({ isActive }) =>
+              cn(
+                "transition-colors",
+                isActive
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              )
+            }
+          >
             {item.title}
-          </NavItem>
+          </NavLink>
         ))}
       </nav>
     </SheetContent>
@@ -98,23 +120,6 @@ const UserDropdown = () => (
       <DropdownMenuItem>Logout</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
-);
-
-const NavItem = ({ to, children, className }) => (
-  <NavLink
-    to={to}
-    className={({ isActive }) =>
-      cn(
-        "transition-colors",
-        isActive
-          ? "text-foreground"
-          : "text-muted-foreground hover:text-foreground",
-        className,
-      )
-    }
-  >
-    {children}
-  </NavLink>
 );
 
 export default Layout;
