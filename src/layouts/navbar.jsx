@@ -90,7 +90,7 @@ const MobileNav = () => (
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-    {navItems.map((item) => (
+        {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
             {item.title}
           </NavItem>
