@@ -37,6 +37,9 @@ const DesktopNav = () => (
       <Package2 className="h-6 w-6" />
       <span className="sr-only">Solar Panel Calculator</span>
     </NavItem>
+    <NavItem to="/design-tools">
+      Design Tools
+    </NavItem>
     <NavItem to="/solar-panel-calculator">
       Solar Panel Calculator
     </NavItem>
@@ -65,10 +68,13 @@ const MobileNav = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Solar Panel Calculator</span>
         </NavItem>
+        <NavItem to="/design-tools">
+          Design Tools
+        </NavItem>
         <NavItem to="/solar-panel-calculator">
-      Solar Panel Calculator
-    </NavItem>
-    {navItems.map((item) => (
+          Solar Panel Calculator
+        </NavItem>
+        {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
             {item.title}
           </NavItem>
