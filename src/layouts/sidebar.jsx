@@ -10,8 +10,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Package2 } from "lucide-react";
-import { Outlet } from "react-router-dom";
-
+import { Outlet, NavLink } from "react-router-dom";
 
 const Layout = () => {
   return (
@@ -104,12 +103,12 @@ const SidebarNavLink = ({ to, children }) => (
     className={({ isActive }) =>
       cn(
         "flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary text-muted-foreground",
-        isActive && "text-primary bg-muted",
+        isActive && "text-primary bg-muted"
       )
     }
   >
     {children}
-  </SidebarNavLink>
+  </NavLink>
 );
 
 export default Layout;
