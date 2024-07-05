@@ -28,6 +28,12 @@ export const navItems = [
   {
     title: "Design Tools",
     to: "/design-tools",
+    children: [
+      {
+        title: "Solar Panel Sizing Calculator",
+        to: "/design-tools/solar-panel-calculator",
+      },
+    ],
   },
   {
     title: "Regional Adaptation",
@@ -54,9 +60,9 @@ const App = () => {
               <Route index element={<Index />} />
               <Route path="/educational-resources" element={<EducationalResources />} />
               <Route path="/design-tools" element={<DesignTools />} />
+              <Route path="/design-tools/solar-panel-calculator" element={<SolarPanelCalculator />} />
               <Route path="/regional-adaptation" element={<RegionalAdaptation />} />
               <Route path="/content-updates" element={<ContentUpdates />} />
-              <Route path="/solar-panel-calculator" element={<SolarPanelCalculator />} />
               <Route path="/simple-calculator" element={<SimpleCalculator />} />
               <Route path="/complex-calculator" element={<ComplexCalculator />} />
             </Route>
