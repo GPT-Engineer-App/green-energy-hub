@@ -9,6 +9,7 @@ import EducationalResources from "./pages/EducationalResources.jsx";
 import DesignTools from "./pages/DesignTools.jsx";
 import RegionalAdaptation from "./pages/RegionalAdaptation.jsx";
 import ContentUpdates from "./pages/ContentUpdates.jsx";
+import PVCalculator from "./pages/PVCalculator.jsx";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const App = () => {
               <Route path="/design-tools" element={<DesignTools />} />
               <Route path="/regional-adaptation" element={<RegionalAdaptation />} />
               <Route path="/content-updates" element={<ContentUpdates />} />
+              <Route path="/pv-calculator" element={<PVCalculator />} />
             </Route>
           </Routes>
         </Router>
