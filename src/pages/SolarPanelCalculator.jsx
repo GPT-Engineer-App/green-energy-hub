@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MapContainer, TileLayer, FeatureGroup } from 'react-leaflet';
 import { EditControl } from 'react-leaflet-draw';
 import 'leaflet/dist/leaflet.css';
-import 'react-leaflet-draw/dist/leaflet.draw.css';
 import styled from 'styled-components';
 import { useQuery } from '@tanstack/react-query';
 import { fetchSunHours } from '@/utils/api';
