@@ -43,6 +43,22 @@ const DesktopNav = () => (
     {navItems.map((item) => (
       <NavItem key={item.to} to={item.to}>
         {item.title}
+        {item.children && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm">
+                {item.title}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              {item.children.map((child) => (
+                <DropdownMenuItem key={child.to} asChild>
+                  <NavLink to={child.to}>{child.title}</NavLink>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       </NavItem>
     ))}
   </nav>
@@ -65,12 +81,18 @@ const MobileNav = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Solar Panel Calculator</span>
         </NavItem>
-        <NavItem to="/solar-panel-calculator">
-      Solar Panel Calculator
-    </NavItem>
-    {navItems.map((item) => (
+        {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
             {item.title}
+            {item.children && (
+              <div className="ml-4">
+                {item.children.map((child) => (
+                  <NavItem key={child.to} to={child.to}>
+                    {child.title}
+                  </NavItem>
+                ))}
+              </div>
+            )}
           </NavItem>
         ))}
       </nav>
