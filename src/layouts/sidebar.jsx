@@ -11,7 +11,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Package2 } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
-import { navItems as SidebarNavLink } from "../App";
+import { navItems } from "../App";
 
 const Layout = () => {
   return (
@@ -42,11 +42,11 @@ const Sidebar = () => (
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
-          {SidebarNavLink.map((item) => (
-            <SidebarNavLink key={item.to} to={item.to}>
+          {navItems.map((item) => (
+            <NavItem key={item.to} to={item.to}>
               {item.icon}
               {item.title}
-            </SidebarNavLink>
+            </NavItem>
           ))}
         </nav>
       </div>
@@ -71,10 +71,10 @@ const MobileSidebar = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
         </NavLink>
-        {SidebarNavLink.map((item) => (
-          <SidebarNavLink key={item.to} to={item.to}>
+        {navItems.map((item) => (
+          <NavItem key={item.to} to={item.to}>
             {item.title}
-          </SidebarNavLink>
+          </NavItem>
         ))}
       </nav>
     </SheetContent>
@@ -100,6 +100,21 @@ const UserDropdown = () => (
   </DropdownMenu>
 );
 
-
+const NavItem = ({ to, children, className }) => (
+  <NavLink
+    to={to}
+    className={({ isActive }) =>
+      cn(
+        "transition-colors",
+        isActive
+          ? "text-foreground"
+          : "text-muted-foreground hover:text-foreground",
+        className,
+      )
+    }
+  >
+    {children}
+  </NavLink>
+);
 
 export default Layout;
