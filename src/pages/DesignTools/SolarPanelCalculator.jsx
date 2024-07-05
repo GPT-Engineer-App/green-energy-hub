@@ -22,7 +22,7 @@ const SolarPanelCalculator = () => {
     <div className="space-y-12">
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-green-600 text-white">
-        <h1 className="text-2xl font-bold">Eco-Electric</h1>
+        <img src="/path/to/logo.png" alt="Eco-Electric Logo" className="h-8"/>
         <nav className="space-x-4">
           <a href="/" className="hover:underline">Home</a>
           <a href="/educational-resources" className="hover:underline">Educational Resources</a>
