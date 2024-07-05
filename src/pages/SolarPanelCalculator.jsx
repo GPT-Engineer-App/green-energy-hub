@@ -44,7 +44,7 @@ const SolarPanelCalculator = () => {
         <h3 className="text-3xl font-bold text-center">Simple Calculator</h3>
         <p className="text-center">Basic estimation for solar panel sizing.</p>
         <div className="text-center">
-          <Button variant="primary" onClick={() => navigate("/simple-calculator")}>Try Now</Button>
+          <Button variant="primary" onClick={() => navigate("/design-tools/simple-calculator")}>Try Now</Button>
         </div>
       </section>
 
@@ -53,7 +53,7 @@ const SolarPanelCalculator = () => {
         <h3 className="text-3xl font-bold text-center">Complex Calculator</h3>
         <p className="text-center">Detailed analysis for solar panel sizing considering multiple factors.</p>
         <div className="text-center">
-          <Button variant="primary" onClick={() => navigate("/complex-calculator")}>Try Now</Button>
+          <Button variant="primary" onClick={() => navigate("/design-tools/complex-calculator")}>Try Now</Button>
         </div>
       </section>
 
