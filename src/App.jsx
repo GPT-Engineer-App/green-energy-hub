@@ -9,9 +9,9 @@ import EducationalResources from "./pages/EducationalResources.jsx";
 import DesignTools from "./pages/DesignTools.jsx";
 import RegionalAdaptation from "./pages/RegionalAdaptation.jsx";
 import ContentUpdates from "./pages/ContentUpdates.jsx";
-import SolarPanelCalculator from "./pages/SolarPanelCalculator.jsx";
 import SimpleCalculator from "./pages/SimpleCalculator.jsx";
 import ComplexCalculator from "./pages/ComplexCalculator.jsx";
+import SolarPanelCalculator from "./pages/SolarPanelCalculator.jsx"; // Import SolarPanelCalculator
 
 const queryClient = new QueryClient();
 
@@ -54,9 +54,9 @@ const App = () => {
               <Route index element={<Index />} />
               <Route path="/educational-resources" element={<EducationalResources />} />
               <Route path="/design-tools" element={<DesignTools />} />
+              <Route path="/design-tools/solar-panel-calculator" element={<SolarPanelCalculator />} /> {/* Move SolarPanelCalculator under Design Tools */}
               <Route path="/regional-adaptation" element={<RegionalAdaptation />} />
               <Route path="/content-updates" element={<ContentUpdates />} />
-              <Route path="/solar-panel-calculator" element={<SolarPanelCalculator />} />
               <Route path="/simple-calculator" element={<SimpleCalculator />} />
               <Route path="/complex-calculator" element={<ComplexCalculator />} />
             </Route>
