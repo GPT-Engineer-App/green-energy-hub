@@ -10,7 +10,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Package2 } from "lucide-react";
-import { Outlet } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import { navItems } from "../App";
 
 const Layout = () => {
@@ -38,7 +38,7 @@ const Sidebar = () => (
         <SidebarNavLink to="/" className="flex items-center gap-2 font-semibold">
           <Package2 className="h-6 w-6" />
           <span>Acme Inc</span>
-        </NavLink>
+        </SidebarNavLink>
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
@@ -109,7 +109,7 @@ const SidebarNavLink = ({ to, children }) => (
     }
   >
     {children}
-  </NavLink>
+  </SidebarNavLink>
 );
 
 export default Layout;
