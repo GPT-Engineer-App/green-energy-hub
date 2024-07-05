@@ -9,7 +9,7 @@ import EducationalResources from "./pages/EducationalResources.jsx";
 import DesignTools from "./pages/DesignTools.jsx";
 import RegionalAdaptation from "./pages/RegionalAdaptation.jsx";
 import ContentUpdates from "./pages/ContentUpdates.jsx";
-import SolarPanelCalculator from "./pages/SolarPanelCalculator.jsx";
+import SolarPanelCalculator from "./pages/DesignTools/SolarPanelCalculator.jsx"; // Updated import
 
 const queryClient = new QueryClient();
 
@@ -54,7 +54,7 @@ const App = () => {
               <Route path="/design-tools" element={<DesignTools />} />
               <Route path="/regional-adaptation" element={<RegionalAdaptation />} />
               <Route path="/content-updates" element={<ContentUpdates />} />
-              <Route path="/solar-panel-calculator" element={<SolarPanelCalculator />} />
+              <Route path="/design-tools/solar-panel-calculator" element={<SolarPanelCalculator />} /> {/* New route */}
             </Route>
           </Routes>
         </Router>
