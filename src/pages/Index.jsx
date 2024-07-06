@@ -56,7 +56,7 @@ const Index = () => {
       <section className="text-center space-y-4">
         <h2 className="text-3xl font-bold">Solar Panel Sizing Calculator</h2>
         <p>Optimize your solar panel installation with our easy-to-use calculator. Input your location, roof area, and energy consumption to get personalized recommendations.</p>
-        <Button variant="primary">Try Now</Button>
+        <Button variant="primary" onClick={() => window.location.href = '/design-tools/solar-calculator'}>Try Now</Button>
         <img src="/placeholder.svg" alt="placeholder" className="mx-auto object-cover w-full h-[400px]" />
       </section>
 
