@@ -10,6 +10,7 @@ import DesignTools from "./pages/DesignTools.jsx";
 import RegionalAdaptation from "./pages/RegionalAdaptation.jsx";
 import ContentUpdates from "./pages/ContentUpdates.jsx";
 import SolarCalculator from "./pages/SolarCalculator.jsx";
+import Recommendations from "./pages/Recommendations.jsx"; // Add this line
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,10 @@ export const navItems = [
     to: "/content-updates",
   },
   {
+    title: "Recommendations",
+    to: "/recommendations",
+  },
+  {
     title: "Sign In/Sign Up",
     to: "/sign-in",
   },
@@ -55,6 +60,7 @@ const App = () => {
               <Route path="/regional-adaptation" element={<RegionalAdaptation />} />
               <Route path="/design-tools/solar-calculator" element={<SolarCalculator />} />
               <Route path="/content-updates" element={<ContentUpdates />} />
+              <Route path="/recommendations" element={<Recommendations />} />
             </Route>
           </Routes>
         </Router>
