@@ -241,7 +241,7 @@ const SolarCalculator = () => {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="20">20%</SelectItem>
-                          <SelectItem value="22">22%</SelectItem>
+                          <SelectItem value="22%">22%</SelectItem>
                           <SelectItem value="manual">Manual Input</SelectItem>
                         </SelectContent>
                       </Select>
